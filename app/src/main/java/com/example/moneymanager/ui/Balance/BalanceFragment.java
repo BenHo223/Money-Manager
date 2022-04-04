@@ -34,11 +34,19 @@ public class BalanceFragment extends Fragment {
         final TextView textView = binding.textDashboard;
         balanceViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
-        Spinner spinner = (Spinner)root.findViewById(R.id.spinner1);
+        Spinner balancespinner = (Spinner)root.findViewById(R.id.balancespinner);
         final String[] Type = {"衣", "食", "住", "行", "玩"};
-        ArrayAdapter<String> lunchList = new ArrayAdapter<>(BalanceFragment.this,
-                android.R.layout.simple_spinner_dropdown_item,Type);spinner.setAdapter(lunchList);
-
+        ArrayAdapter<String> TypeList = new ArrayAdapter<>(BalanceFragment.this,
+                android.R.layout.simple_spinner_dropdown_item,Type);
+        balancespinner.setAdapter(TypeList);
+        balancespinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(BalanceFragment.this, "您選擇了:" + Type[position], Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
 
     }
 
