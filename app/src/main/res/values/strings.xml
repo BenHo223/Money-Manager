@@ -9,4 +9,5 @@
     <string name="clothing">Clothing</string>
     <string name="eat">Eat</string>
     <string name="living">Living</string>
+    <string name="balance_total">Total Amount</string>
 </resources>
