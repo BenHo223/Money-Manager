@@ -20,10 +20,9 @@
             android:weightSum="1">
 
             <Spinner
-                android:id="@+id/balancespinner"
+                android:id="@+id/spinner1"
                 android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content" />
         </TableRow>
 
         <TableRow
@@ -36,6 +35,9 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
+
+        </TableRow>
     </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
