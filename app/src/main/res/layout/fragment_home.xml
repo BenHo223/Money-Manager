@@ -138,13 +138,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/transport" />
-
                 <RadioButton
                     android:id="@+id/rb_transport"
                     android:layout_width="wrap_content"
