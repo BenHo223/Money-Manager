@@ -66,7 +66,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="date"
-                android:text="@string/inputdate" />
+                android:text="@string/input_date" />
         </TableRow>
 
         <TableRow
