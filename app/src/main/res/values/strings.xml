@@ -3,4 +3,10 @@
     <string name="title_home">Home</string>
     <string name="title_balance">Balance</string>
     <string name="title_report">Report</string>
+    <string name="income">Income</string>
+    <string name="expense">Expense</string>
+    <string name="input_date">Please input date</string>
+    <string name="clothing">Clothing</string>
+    <string name="eat">Eat</string>
+    <string name="living">Living</string>
 </resources>
