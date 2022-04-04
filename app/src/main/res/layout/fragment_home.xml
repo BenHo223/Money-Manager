@@ -66,7 +66,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="date"
-                android:text="@string/inputdate" />
+                android:text="@string/input_date" />
         </TableRow>
 
         <TableRow
@@ -124,10 +124,7 @@
                     android:id="@+id/clothing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:onClick="onAlignmentSelected"
-                    android:background="@drawable/alignment_selector"
-                    android:button="@drawable/ic_android_black_24dp" />
+                    android:checked="true"/>
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -139,10 +136,7 @@
                 <RadioButton
                     android:id="@+id/eat"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onAlignmentSelected"
-                    android:background="@drawable/alignment_selector"
-                    android:button="@drawable/ic_android_black_24dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -154,10 +148,7 @@
                 <RadioButton
                     android:id="@+id/living"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onAlignmentSelected"
-                    android:background="@drawable/alignment_selector"
-                    android:button="@drawable/ic_android_black_24dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <ImageView
                     android:id="@+id/imageView4"
@@ -169,10 +160,7 @@
                 <RadioButton
                     android:id="@+id/transport"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onAlignmentSelected"
-                    android:background="@drawable/alignment_selector"
-                    android:button="@drawable/ic_android_black_24dp"/>
+                    android:layout_height="wrap_content"/>
 
             </RadioGroup>
 
