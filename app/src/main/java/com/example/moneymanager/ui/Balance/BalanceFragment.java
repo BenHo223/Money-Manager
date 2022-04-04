@@ -31,8 +31,6 @@ public class BalanceFragment extends Fragment {
         binding = FragmentBalanceBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        balanceViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
         Spinner balancespinner = (Spinner)root.findViewById(R.id.balancespinner);
         final String[] Type = {"衣", "食", "住", "行", "玩"};
