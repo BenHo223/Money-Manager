@@ -17,10 +17,11 @@ public class TypeAdapter extends BaseAdapter {
     private Context context;
     private List<Type> typeList;
 
-    public TypeAdapter(BalanceFragment context, List<Type> typeList){
-        BalanceFragment.context = context;
-        BalanceFragment.typeList = typeList;
+    public TypeAdapter(Context context, List<Type> typeList){
+        this.context = context;
+        this.typeList = typeList;
     }
+
 
     @Override
     public int getCount() {

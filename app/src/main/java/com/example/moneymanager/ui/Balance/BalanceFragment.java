@@ -1,5 +1,6 @@
 package com.example.moneymanager.ui.Balance;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.moneymanager.MainActivity;
 import com.example.moneymanager.R;
 import com.example.moneymanager.TypeAdapter;
 import com.example.moneymanager.databinding.FragmentBalanceBinding;
@@ -25,8 +27,7 @@ import java.util.List;
 
 public class BalanceFragment extends Fragment {
 
-    public static BalanceFragment context;
-    public static List<Type> typeList;
+
     private FragmentBalanceBinding binding;
     private Spinner spinner_type;
 
@@ -42,7 +43,7 @@ public class BalanceFragment extends Fragment {
 
         spinner_type = root.findViewById(R.id.spinner_type);
 
-        adapter = new TypeAdapter(BalanceFragment.this, Data.getTypeList());
+        adapter = new TypeAdapter(getActivity(), Data.getTypeList());
         spinner_type.setAdapter(adapter);
                 
         return root;
