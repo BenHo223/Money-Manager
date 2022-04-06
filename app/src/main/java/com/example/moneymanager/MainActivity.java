@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-
+/*
 // Import the required libraries
 import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
@@ -106,4 +106,4 @@ public class MainActivity
         // To animate the pie chart
         pieChart.startAnimation();
     }
-}
+}*/
