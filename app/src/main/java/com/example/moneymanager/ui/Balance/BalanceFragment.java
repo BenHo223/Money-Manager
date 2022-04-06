@@ -42,9 +42,8 @@ public class BalanceFragment extends Fragment {
 
         spinner_type = root.findViewById(R.id.spinner_type);
 
-        adapter = new TypeAdapter(BalanceFragment.this, Data.getTypeList());
+        adapter = new TypeAdapter(getActivity(), Data.getTypeList());
         spinner_type.setAdapter(adapter);
-
         return root;
 
     }
