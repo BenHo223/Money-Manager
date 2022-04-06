@@ -1,10 +1,12 @@
 package com.example.moneymanager.ui.home;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -16,6 +18,8 @@ import com.example.moneymanager.R;
 
 
 import com.example.moneymanager.databinding.FragmentHomeBinding;
+
+import java.util.Calendar;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
@@ -36,7 +40,26 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         View root = binding.getRoot();
         initObjects();
 
-
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        //Date picker
+        tv_inputDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                month = month+1;
+                                String date = day+"/"+month+"/"+year;
+                                tv_inputDate.setText(date);
+                            }
+                        },year,month,day);
+                datePickerDialog.show();
+            }
+        });
 
         return root;
     }
@@ -60,6 +83,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         rg_expense = root.findViewById(R.id.rg_expense);
         rg_income = root.findViewById(R.id.rg_income);
+
+        tv_inputDate = root.findViewById(R.id.tv_InputDate);
+        et_note = root.findViewById(R.id.et_note);
+        et_dollars = root.findViewById(R.id.et_dollars);
+
+
 
     }
 
