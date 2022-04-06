@@ -10,7 +10,7 @@ public class BalanceViewModel extends ViewModel {
 
     public BalanceViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is Balance fragment");
     }
 
     public LiveData<String> getText() {
