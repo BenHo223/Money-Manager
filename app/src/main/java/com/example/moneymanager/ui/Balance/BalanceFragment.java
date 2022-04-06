@@ -15,13 +15,22 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.moneymanager.R;
+import com.example.moneymanager.TypeAdapter;
 import com.example.moneymanager.databinding.FragmentBalanceBinding;
+import com.example.moneymanager.inventory.Data;
+import com.example.moneymanager.inventory.Type;
 
 import java.lang.reflect.Array;
+import java.util.List;
 
 public class BalanceFragment extends Fragment {
 
+    public static BalanceFragment context;
+    public static List<Type> typeList;
     private FragmentBalanceBinding binding;
+    private Spinner spinner_type;
+
+    private TypeAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,20 +40,12 @@ public class BalanceFragment extends Fragment {
         binding = FragmentBalanceBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        spinner_type = root.findViewById(R.id.spinner_type);
+
+        adapter = new TypeAdapter(BalanceFragment.this, Data.getTypeList());
+        spinner_type.setAdapter(adapter);
+                
         return root;
-        Spinner balancespinner = (Spinner)root.findViewById(R.id.balancespinner);
-        final String[] Type = {"衣", "食", "住", "行", "玩"};
-        ArrayAdapter<String> TypeList = new ArrayAdapter<>(BalanceFragment.this,
-                android.R.layout.simple_spinner_dropdown_item,Type);
-        balancespinner.setAdapter(TypeList);
-        balancespinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(BalanceFragment.this, "您選擇了:" + Type[position], Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
 
     }
 
