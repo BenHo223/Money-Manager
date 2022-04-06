@@ -25,7 +25,7 @@
                     android:id="@+id/btn_expense"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:text="Expense" />
 
@@ -33,7 +33,7 @@
                     android:id="@+id/btn_Income"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:text="@string/income" />
 
@@ -278,11 +278,27 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_save"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save" />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Save" />
+
+                <Button
+                    android:id="@+id/btn_clear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Clear" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
