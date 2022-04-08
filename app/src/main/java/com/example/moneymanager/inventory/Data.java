@@ -25,7 +25,7 @@ public class Data {
         Type Transport = new Type();
         Transport.setName("transport");
         Transport.setImage(R.drawable.transport);
-        typeList.add(Clothes);
+        typeList.add(Transport);
 
         return typeList;
     }
