@@ -41,14 +41,14 @@ public class TypeAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View rootView = LayoutInflater.from(context).inflate(R.layout.item_type,viewGroup,false);
+        View root = LayoutInflater.from(context).inflate(R.layout.item_type,viewGroup,false);
 
-        TextView txtName = rootView.findViewById(R.id.name);
-        ImageView image = rootView.findViewById(R.id.image);
+        TextView txtName = root.findViewById(R.id.name);
+        ImageView image = root.findViewById(R.id.image);
 
         txtName.setText(typeList.get(i).getName());
         image.setImageResource(typeList.get(i).getImage());
 
-        return rootView;
+        return root;
     }
 }
