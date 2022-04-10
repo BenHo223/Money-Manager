@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:layout_height="130dp">
+
+    <TextView
+        android:id="@+id/cellDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/cellNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/cellCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/cellEI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Expense/Income"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="17sp" />
+
+
+</LinearLayout>

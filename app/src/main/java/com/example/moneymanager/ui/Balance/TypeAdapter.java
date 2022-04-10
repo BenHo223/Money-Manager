@@ -1,4 +1,4 @@
-package com.example.moneymanager;
+package com.example.moneymanager.ui.Balance;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.moneymanager.R;
 import com.example.moneymanager.inventory.Type;
 import com.example.moneymanager.ui.Balance.BalanceFragment;
 
