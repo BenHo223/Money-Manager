@@ -22,24 +22,18 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.moneymanager.R;
 
 
+import com.example.moneymanager.database.DatabaseHelper;
 import com.example.moneymanager.databinding.FragmentHomeBinding;
 
 import java.util.Calendar;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
-    Button btn_expense, btn_income, btn_save, btn_clear;
+    Button btn_expense, btn_income, btn_save,btn_save2, btn_clear;
     EditText et_note, et_amount;
     TextView tv_inputDate;
     RadioGroup rg_expense1,rg_expense2, rg_income1, rg_income2;
     String category;
-
-    SharedPreferences sharedPreferences;
-    public static final String mypreference = "mypref";
-    public static final String Date = "dateKey";
-    public static final String Note = "noteKey";
-    public static final String Category = "categoryKey";
-    public static final String Amount = "amountKey";
 
 
     private FragmentHomeBinding binding;
@@ -143,8 +137,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        sharedPreferences = getContext().getSharedPreferences(mypreference,
-                Context.MODE_PRIVATE);
 
         return root;
     }
@@ -158,10 +150,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void initObjects(){
         View root = binding.getRoot();
         btn_save = root.findViewById(R.id.btn_save);
+        btn_save2 = root.findViewById(R.id.btn_save2);
         btn_clear = root.findViewById(R.id.btn_clear);
         btn_expense = root.findViewById(R.id.btn_expense);
         btn_income = root.findViewById(R.id.btn_income);
         btn_save.setOnClickListener(this);
+        btn_save2.setOnClickListener(this);
         btn_clear.setOnClickListener(this);
         btn_expense.setOnClickListener(this);
         btn_income.setOnClickListener(this);
@@ -190,8 +184,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.btn_expense:
                 rg_expense1.setVisibility(View.VISIBLE);
                 rg_expense2.setVisibility(View.VISIBLE);
+                btn_save.setVisibility(View.VISIBLE);
                 rg_income1.setVisibility(View.GONE);
                 rg_income2.setVisibility(View.GONE);
+                btn_save2.setVisibility(View.GONE);
                 Toast.makeText(getContext().getApplicationContext(),"Expense",Toast.LENGTH_SHORT).show();
 
                 break;
@@ -199,27 +195,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.btn_income:
                 rg_income1.setVisibility(View.VISIBLE);
                 rg_income2.setVisibility(View.VISIBLE);
+                btn_save2.setVisibility(View.VISIBLE);
                 rg_expense1.setVisibility(View.GONE);
                 rg_expense2.setVisibility(View.GONE);
+                btn_save.setVisibility(View.GONE);
                 Toast.makeText(getContext().getApplicationContext(),"Income",Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.btn_save:
-                SharedPreferences.Editor editor =sharedPreferences.edit();
-                // save values to the preferences
-                editor.putString(Date, tv_inputDate.getText().toString());
-                editor.putString(Note, et_note.getText().toString());
-                editor.putString(Category, category);
-                editor.putString(Amount, et_amount.getText().toString());
-
-                Log.d("hello1","saved");
-                // commit the changes made to the file
-                editor.commit();
-                // inform user about SAVE completed
-                Toast.makeText(getContext().getApplicationContext(),"Saved",Toast.LENGTH_SHORT).show();
-
-                String temp = sharedPreferences.getString(Category,"");
-                Log.d("hello1", temp);
+                DatabaseHelper myDB = new DatabaseHelper(getActivity());
+                myDB.addData(tv_inputDate.getText().toString().trim(),
+                        et_note.getText().toString().trim(),
+                        category,
+                        Float.valueOf(et_amount.getText().toString().trim()));
                 break;
 
             case R.id.btn_clear:
@@ -232,4 +220,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         }
 
     }
+
+
 }
