@@ -270,15 +270,6 @@
                     android:text="Save" />
 
                 <Button
-                    android:id="@+id/btn_save2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:text="Save"
-                    android:visibility="gone" />
-
-                <Button
                     android:id="@+id/btn_clear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
