@@ -29,7 +29,7 @@ import java.util.Calendar;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
-    Button btn_expense, btn_income, btn_save,btn_save2, btn_clear;
+    Button btn_expense, btn_income, btn_save, btn_clear;
     EditText et_note, et_amount;
     TextView tv_inputDate;
     RadioGroup rg_expense1,rg_expense2, rg_income1, rg_income2;
@@ -150,12 +150,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     public void initObjects(){
         View root = binding.getRoot();
         btn_save = root.findViewById(R.id.btn_save);
-        btn_save2 = root.findViewById(R.id.btn_save2);
         btn_clear = root.findViewById(R.id.btn_clear);
         btn_expense = root.findViewById(R.id.btn_expense);
         btn_income = root.findViewById(R.id.btn_income);
         btn_save.setOnClickListener(this);
-        btn_save2.setOnClickListener(this);
         btn_clear.setOnClickListener(this);
         btn_expense.setOnClickListener(this);
         btn_income.setOnClickListener(this);
@@ -184,10 +182,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.btn_expense:
                 rg_expense1.setVisibility(View.VISIBLE);
                 rg_expense2.setVisibility(View.VISIBLE);
-                btn_save.setVisibility(View.VISIBLE);
                 rg_income1.setVisibility(View.GONE);
                 rg_income2.setVisibility(View.GONE);
-                btn_save2.setVisibility(View.GONE);
                 Toast.makeText(getContext().getApplicationContext(),"Expense",Toast.LENGTH_SHORT).show();
 
                 break;
@@ -195,10 +191,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             case R.id.btn_income:
                 rg_income1.setVisibility(View.VISIBLE);
                 rg_income2.setVisibility(View.VISIBLE);
-                btn_save2.setVisibility(View.VISIBLE);
                 rg_expense1.setVisibility(View.GONE);
                 rg_expense2.setVisibility(View.GONE);
-                btn_save.setVisibility(View.GONE);
                 Toast.makeText(getContext().getApplicationContext(),"Income",Toast.LENGTH_SHORT).show();
                 break;
 
