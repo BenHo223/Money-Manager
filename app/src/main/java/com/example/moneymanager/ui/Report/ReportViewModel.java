@@ -17,3 +17,5 @@ public class ReportViewModel extends ViewModel {
         return mText;
     }
 }
+
+
