@@ -58,12 +58,17 @@
                 <TextView
                     android:id="@+id/tv_balanceTotal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="6"
                     android:hint="@string/balance_total"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
     </ScrollView>
