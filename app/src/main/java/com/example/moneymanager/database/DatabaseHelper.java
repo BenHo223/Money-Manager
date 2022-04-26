@@ -2,6 +2,7 @@ package com.example.moneymanager.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -16,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final int DB_VERSION = 1;
 
     private static final String TABLE_NAME_1 = "myMoney";
-    private static final String COL_ID = "id";
+    private static final String COL_ID = "_id";
     private static final String COL_DATE = "date";
     private static final String COL_NOTE = "note";
     private static final String COL_CATEGORY = "category";
@@ -65,6 +66,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public Cursor readAllData(){
+        String query = "SELECT * FROM " + TABLE_NAME_1;
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = null;
+        if (db != null)
+            cursor = db.rawQuery(query, null);
+
+        return cursor;
+    }
+
+    public void deteteById (String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME_1, "_id=?" , new String[]{row_id});
+        if (result == -1 ){
+            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+        }else
+            Toast.makeText(context, "Deleted successfully!", Toast.LENGTH_SHORT).show();
+    }
 
 
 }

@@ -7,6 +7,11 @@ import java.util.List;
 public class Data {
     public static List<Type> getTypeList(){
         List<Type> typeList = new ArrayList<>();
+        Type All = new Type();
+        All.setName("All");
+        All.setImage(R.drawable.all);
+        typeList.add(All);
+
         Type Clothes = new Type();
         Clothes.setName("Clothes");
         Clothes.setImage(R.drawable.clothes);
