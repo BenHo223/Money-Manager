@@ -17,6 +17,8 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="8dp"
         android:layout_toRightOf="@+id/image"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:text="Name" />
 
 

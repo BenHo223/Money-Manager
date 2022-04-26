@@ -23,9 +23,29 @@ public class Data {
         typeList.add(Living);
 
         Type Transport = new Type();
-        Transport.setName("transport");
+        Transport.setName("Transport");
         Transport.setImage(R.drawable.transport);
         typeList.add(Transport);
+
+        Type Salary = new Type();
+        Salary.setName("Salary");
+        Salary.setImage(R.drawable.salary);
+        typeList.add(Salary);
+
+        Type Investment = new Type();
+        Investment.setName("Investment");
+        Investment.setImage(R.drawable.investment);
+        typeList.add(Investment);
+
+        Type Bonus = new Type();
+        Bonus.setName("Bonus");
+        Bonus.setImage(R.drawable.bonus);
+        typeList.add(Bonus);
+
+        Type Other = new Type();
+        Other.setName("Other");
+        Other.setImage(R.drawable.other);
+        typeList.add(Other);
 
         return typeList;
     }
