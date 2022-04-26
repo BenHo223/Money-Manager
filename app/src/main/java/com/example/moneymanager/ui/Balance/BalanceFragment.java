@@ -32,8 +32,7 @@ public class BalanceFragment extends Fragment {
     private TypeAdapter adapter;
     private ListView noteListView;
 
-    DatabaseHelper myDB;
-    ArrayList<String> record_id, record_date, record_note, record_category, record_amount;
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -52,32 +51,8 @@ public class BalanceFragment extends Fragment {
         //initWidgets();
         //setNoteAdapter();
 
-        myDB = new DatabaseHelper(getActivity());
-        record_id = new ArrayList<>();
-        record_date = new ArrayList<>();
-        record_note = new ArrayList<>();
-        record_category = new ArrayList<>();
-        record_amount = new ArrayList<>();
-        storeDataInArrays();
-
-
 
         return root;
-    }
-
-    void storeDataInArrays(){
-        Cursor cursor = myDB.readAllData();
-        if(cursor.getCount() == 0)
-            Toast.makeText(getContext().getApplicationContext(), "No data.", Toast.LENGTH_SHORT).show();
-        else{
-            while (cursor.moveToNext()){
-                record_id.add(cursor.getString(0));
-                record_date.add(cursor.getString(1));
-                record_note.add(cursor.getString(2));
-                record_category.add(cursor.getString(3));
-                record_amount.add(cursor.getString(4));
-            }
-        }
     }
 
 
