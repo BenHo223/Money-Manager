@@ -23,8 +23,6 @@ public class ReportFragment extends Fragment {
         binding = FragmentReportBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textNotifications;
-        reportViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
