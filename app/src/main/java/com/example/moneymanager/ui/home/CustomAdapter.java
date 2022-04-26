@@ -16,15 +16,13 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
     private Context context;
-    private Activity activity;
     ArrayList id,date,category,note,amount;
-    public CustomAdapter(Context context, ArrayList id, ArrayList date, ArrayList category, ArrayList note, ArrayList amount){
-        this.activity = activity;
+    public CustomAdapter(Context context, ArrayList id, ArrayList date, ArrayList note, ArrayList category, ArrayList amount){
         this.context =context;
         this.id = id;
         this.date = date;
-        this.category = category;
         this.note = note;
+        this.category = category;
         this.amount = amount;
 
     }
@@ -41,8 +39,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.id_txt.setText(String.valueOf(id.get(position)));
-        holder.category_txt.setText(String.valueOf(category.get(position)));
         holder.date_txt.setText(String.valueOf(date.get(position)));
+        holder.category_txt.setText(String.valueOf(category.get(position)));
         holder.note_txt.setText(String.valueOf(note.get(position)));
         holder.amount_txt.setText(String.valueOf(amount.get(position)));
     }
