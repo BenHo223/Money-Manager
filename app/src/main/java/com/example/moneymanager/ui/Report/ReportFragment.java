@@ -1,5 +1,38 @@
 package com.example.moneymanager.ui.Report;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.widget.TextView;
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
+import com.example.moneymanager.MainActivity;
+import com.example.moneymanager.R;
+import com.example.moneymanager.database.DatabaseHelper;
+import com.example.moneymanager.databinding.FragmentBalanceBinding;
+import com.example.moneymanager.inventory.Data;
+import com.example.moneymanager.inventory.Type;
+import com.example.moneymanager.ui.home.CustomAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +81,7 @@ public class MainActivity
 
     // Create the object of TextView
     // and PieChart class
-    TextView tvR, tvPython, tvCPP, tvJava;
+    TextView tvclothing, tvPython, tvCPP, tvJava;
     PieChart pieChart;
 
     @Override
@@ -60,7 +93,7 @@ public class MainActivity
         // Link those objects with their
         // respective id's that
         // we have given in .XML file
-        tvR = findViewById(R.id.tvR);
+        tvclothing = findViewById(R.id.tvclothing);
         tvPython = findViewById(R.id.tvPython);
         tvCPP = findViewById(R.id.tvCPP);
         tvJava = findViewById(R.id.tvJava);
@@ -75,7 +108,7 @@ public class MainActivity
     {
 
         // Set the percentage of language used
-        tvR.setText(Integer.toString(40));
+        tvclothing.setText(Integer.toString(40));
         tvPython.setText(Integer.toString(30));
         tvCPP.setText(Integer.toString(5));
         tvJava.setText(Integer.toString(25));
@@ -84,7 +117,7 @@ public class MainActivity
         pieChart.addPieSlice(
                 new PieModel(
                         "R",
-                        Integer.parseInt(tvR.getText().toString()),
+                        Integer.parseInt(tvclothing.getText().toString()),
                         Color.parseColor("#FFA726")));
         pieChart.addPieSlice(
                 new PieModel(
