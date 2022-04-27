@@ -134,11 +134,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="10dp"
-                                android:text="R" />
+                                android:text="Clothes" />
 
                         </LinearLayout>
 
-                        <!--Linear layout to display Python-->
+                        <!--Linear layout to display Clothes-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="15dp"
@@ -156,7 +156,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="10dp"
-                                android:text="Python" />
+                                android:text="Food" />
 
                         </LinearLayout>
 
@@ -178,7 +178,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="10dp"
-                                android:text="C++" />
+                                android:text="Living" />
 
                         </LinearLayout>
 
@@ -200,7 +200,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="10dp"
-                                android:text="Java" />
+                                android:text="Transport" />
 
                         </LinearLayout>
 
@@ -235,7 +235,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="20dp"
-                        android:text="Percentage of "
+                        android:text="Total Money "
                         android:textSize="23sp"
                         android:textStyle="bold" />
 
@@ -261,7 +261,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="R"
+                            android:text="Clothes"
                             android:textSize="18sp" />
 
                         <!--Text view to display the -->
@@ -300,7 +300,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Python"
+                            android:text="Food"
                             android:textSize="18sp" />
 
                         <!--Text view to display the percentage -->
@@ -340,7 +340,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="C++"
+                            android:text="Living"
                             android:textSize="18sp" />
 
                         <!--Text view to display the percentage -->
@@ -379,7 +379,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
-                            android:text="Java"
+                            android:text="Transport"
                             android:textSize="18sp" />
 
                         <!--Text view to display the percentage -->
