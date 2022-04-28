@@ -1,48 +1,67 @@
 package com.example.moneymanager.ui.Report;
 
-import com.example.moneymanager.R;
-import androidx.appcompat.app.AppCompatActivity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import org.eazegraph.lib.charts.PieChart;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.moneymanager.R;
+import com.example.moneymanager.database.DatabaseHelper;
+import com.example.moneymanager.databinding.FragmentReportBinding;
+
 import org.eazegraph.lib.models.PieModel;
 
-public class ReportFragment
-        extends AppCompatActivity {
+import java.util.ArrayList;
 
-    // Create the object of TextView
-    // and PieChart class
+public class ReportFragment extends Fragment {
+    DatabaseHelper databaseHelper;
+    SQLiteDatabase sqLiteDatabase;
+
     TextView tvClothing, tvFood, tvLiving, tvTransport, tvSalary, tvInvestment, tvBonus, tvOthers;
     org.eazegraph.lib.charts.PieChart pieChartIn, pieChartEx;
+    private FragmentReportBinding binding;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        ReportViewModel reportViewModel =
+                new ViewModelProvider(this).get(ReportViewModel.class);
 
+        binding = FragmentReportBinding.inflate(inflater, container, false);
+
+        View root = binding.getRoot();
         // Link those objects with their
         // respective id's that
         // we have given in .XML file
-        tvClothing = findViewById(R.id.tvClothing);
-        tvFood = findViewById(R.id.tvFood);
-        tvLiving = findViewById(R.id.tvLiving);
-        tvTransport = findViewById(R.id.tvTransport);
-        pieChartIn = findViewById(R.id.piechartin);
+        tvClothing = root.findViewById(R.id.tvClothing);
+        tvFood = root.findViewById(R.id.tvFood);
+        tvLiving = root.findViewById(R.id.tvLiving);
+        tvTransport = root.findViewById(R.id.tvTransport);
+        pieChartIn = root.findViewById(R.id.piechartin);
 
         // Creating a method setData()
         // to set the text in text view and pie chart
 
 
-        tvSalary = findViewById(R.id.tvSalary);
-        tvInvestment = findViewById(R.id.tvInvestment);
-        tvBonus = findViewById(R.id.tvBonus);
-        tvOthers = findViewById(R.id.tvOthers);
-        pieChartEx = findViewById(R.id.piechartex);
+        tvSalary = root.findViewById(R.id.tvSalary);
+        tvInvestment = root.findViewById(R.id.tvInvestment);
+        tvBonus = root.findViewById(R.id.tvBonus);
+        tvOthers = root.findViewById(R.id.tvOthers);
+        pieChartEx = root.findViewById(R.id.piechartex);
 
         // Creating a method setData()
         // to set the text in text view and pie chart
         setData();
+
+
+        return root;
     }
 
     private void setData() {
@@ -78,7 +97,7 @@ public class ReportFragment
 
 
         // Set the percentage of language used
-       tvSalary.setText(Integer.toString(25));
+        tvSalary.setText(Integer.toString(25));
         tvInvestment.setText(Integer.toString(25));
         tvBonus.setText(Integer.toString(25));
         tvOthers.setText(Integer.toString(25));
@@ -109,5 +128,12 @@ public class ReportFragment
         pieChartIn.startAnimation();
         pieChartEx.startAnimation();
 
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
