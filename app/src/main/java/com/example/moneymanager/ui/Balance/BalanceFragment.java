@@ -53,20 +53,37 @@ public class BalanceFragment extends Fragment {
 
         spinner_type = root.findViewById(R.id.spinner_type);
         spinner_type.setAdapter(adapter);
+        recyclerView = root.findViewById(R.id.recyclerView);
 
         spinner_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
                     case 0:
-                        storeDataInArrays();
-                        recyclerView = root.findViewById(R.id.recyclerView);
-                        customAdapter = new CustomAdapter(getContext(),record_id,record_date,record_note,record_category,record_amount);
+                        recyclerView.setAdapter(null);
+                        record_id.clear();
+                        record_date.clear();
+                        record_note.clear();
+                        record_category.clear();
+                        record_amount.clear();
+                        storeAllDataInArrays();
+                        customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         Toast.makeText(adapterView.getContext(), "Select: 0", Toast.LENGTH_LONG).show();
                         break;
                     case 1:
+                        recyclerView.setAdapter(null);
+                        record_id.clear();
+                        record_date.clear();
+                        record_note.clear();
+                        record_category.clear();
+                        record_amount.clear();
+                        storeClothesDataInArrays();
+                        customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
+                        recyclerView.setAdapter(customAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
                         Toast.makeText(adapterView.getContext(),"Select: 1", Toast.LENGTH_LONG ).show();
                         break;
@@ -116,6 +133,8 @@ public class BalanceFragment extends Fragment {
 
 
 
+
+
         return root;
 
     }
@@ -130,7 +149,7 @@ public class BalanceFragment extends Fragment {
         binding = null;
     }
 
-    void storeDataInArrays(){
+    void storeAllDataInArrays(){
         Cursor cursor = myDB.readAllData();
         if(cursor.getCount() == 0){
             Toast.makeText(getContext(),"NO data",Toast.LENGTH_LONG).show();
@@ -145,4 +164,23 @@ public class BalanceFragment extends Fragment {
 
         }
     }
+
+    void storeClothesDataInArrays(){
+        Cursor cursor = myDB.readClothes();
+        if(cursor.getCount() == 0){
+            Toast.makeText(getContext(),"NO data",Toast.LENGTH_LONG).show();
+        }else{
+            while (cursor.moveToNext()){
+                record_id.add(cursor.getString(0));
+                record_date.add(cursor.getString(1));
+                record_note.add(cursor.getString(2));
+                record_category.add(cursor.getString(3));
+                record_amount.add(cursor.getString(4));
+            }
+
+        }
+    }
+
+
+
 }
