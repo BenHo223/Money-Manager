@@ -47,10 +47,10 @@ public class Data {
         Bonus.setImage(R.drawable.bonus);
         typeList.add(Bonus);
 
-        Type Other = new Type();
-        Other.setName("Other");
-        Other.setImage(R.drawable.other);
-        typeList.add(Other);
+        Type Others = new Type();
+        Others.setName("Others");
+        Others.setImage(R.drawable.other);
+        typeList.add(Others);
 
         return typeList;
     }
