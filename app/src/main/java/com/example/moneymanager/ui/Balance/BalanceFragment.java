@@ -6,14 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,11 +21,9 @@ import com.example.moneymanager.R;
 import com.example.moneymanager.database.DatabaseHelper;
 import com.example.moneymanager.databinding.FragmentBalanceBinding;
 import com.example.moneymanager.inventory.Data;
-import com.example.moneymanager.inventory.Type;
 import com.example.moneymanager.ui.home.CustomAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class BalanceFragment extends Fragment {
 

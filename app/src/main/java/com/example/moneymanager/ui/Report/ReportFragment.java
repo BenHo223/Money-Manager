@@ -1,5 +1,8 @@
 package com.example.moneymanager.ui.Report;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +13,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.moneymanager.R;
+import com.example.moneymanager.database.DatabaseHelper;
 import com.example.moneymanager.databinding.FragmentReportBinding;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
+
 public class ReportFragment extends Fragment {
+    DatabaseHelper databaseHelper;
+    SQLiteDatabase sqLiteDatabase;
+
+    PieDataSet pieDataSet =new PieDataSet(null,null);
 
     private FragmentReportBinding binding;
 
@@ -23,7 +40,36 @@ public class ReportFragment extends Fragment {
         binding = FragmentReportBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        PieChart pieChart = root.findViewById(R.id.pieChart);
+        databaseHelper = new DatabaseHelper(getActivity());
+        sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        pieDataSet.setValues(getDataValues());
+        pieDataSet.setLabel("Descripcion");
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        pieDataSet.setValueTextColor(Color.BLACK);
+        pieDataSet.setValueTextSize(10f);
+
+        PieData pieData = new PieData(pieDataSet);
+
+        pieChart.setData(pieData);
+        pieChart.getDescription().setEnabled(false);
+        pieChart.setCenterText("desc Pie");
+        pieChart.animate();
+
+        pieDataSet.setFormLineWidth(4);
+
         return root;
+    }
+    private ArrayList<PieEntry> getDataValues(){
+        ArrayList<PieEntry> dataValues = new ArrayList<>();
+        Cursor cursor = databaseHelper.getValues();
+
+        for (int i=0;i<cursor.getCount();i++){
+            cursor.moveToNext();
+            dataValues.add(new PieEntry(cursor.getFloat(0),String.valueOf(cursor.getString(1))));
+        }
+        return dataValues;
     }
 
     @Override
