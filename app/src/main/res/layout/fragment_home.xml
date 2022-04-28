@@ -110,14 +110,14 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rb_clothing"
+                    android:id="@+id/rb_clothes"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:drawableTop="@drawable/clothes"
                     android:gravity="center"
-                    android:text="@string/clothing"
+                    android:text="@string/clothes"
                     android:textAlignment="center"
                     android:textSize="18sp"
                     android:textStyle="bold" />

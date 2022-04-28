@@ -2,9 +2,7 @@ package com.example.moneymanager.ui.home;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +70,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 switch (checkedId) {
-                    case R.id.rb_clothing:
+                    case R.id.rb_clothes:
                         rg_expense2.clearCheck();
                         category = "Clothing";
                         break;
