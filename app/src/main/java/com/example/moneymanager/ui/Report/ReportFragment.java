@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,18 +17,21 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.moneymanager.R;
 import com.example.moneymanager.database.DatabaseHelper;
 import com.example.moneymanager.databinding.FragmentReportBinding;
+import com.example.moneymanager.ui.home.CustomAdapter;
 
 import org.eazegraph.lib.models.PieModel;
 
 import java.util.ArrayList;
 
 public class ReportFragment extends Fragment {
-    DatabaseHelper databaseHelper;
-    SQLiteDatabase sqLiteDatabase;
 
     TextView tvClothing, tvFood, tvLiving, tvTransport, tvSalary, tvInvestment, tvBonus, tvOthers;
     org.eazegraph.lib.charts.PieChart pieChartIn, pieChartEx;
     private FragmentReportBinding binding;
+    DatabaseHelper myDB;
+    CustomAdapter customAdapter;
+//    ArrayList<String> record_date, record_category, tolat_cal_amount;
+    Float tolat_cal_amount;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +39,8 @@ public class ReportFragment extends Fragment {
                 new ViewModelProvider(this).get(ReportViewModel.class);
 
         binding = FragmentReportBinding.inflate(inflater, container, false);
+
+        myDB =new DatabaseHelper(getActivity());
 
         View root = binding.getRoot();
         // Link those objects with their
@@ -67,6 +73,7 @@ public class ReportFragment extends Fragment {
     private void setData() {
 
         // Set the percentage of language used
+        storeTolatAmount("clothing");
         tvClothing.setText(Integer.toString(25));
         tvFood.setText(Integer.toString(25));
         tvLiving.setText(Integer.toString(25));
@@ -130,6 +137,18 @@ public class ReportFragment extends Fragment {
 
     }
 
+
+    void storeTolatAmount(String category){
+        Cursor cursor = myDB.sumAmount("'"+category+"'");
+        if(cursor.getCount() == 0){
+            Toast.makeText(getContext(),"NO data",Toast.LENGTH_LONG).show();
+        }else{
+            while (cursor.moveToNext()){
+                tolat_cal_amount = cursor.getFloat(0);
+            }
+
+        }
+    }
 
     @Override
     public void onDestroyView() {

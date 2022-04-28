@@ -142,6 +142,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+
+    public Cursor sumAmount(String cal){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery("SELECT Sum("+COL_AMOUNT+ ") FROM " + TABLE_NAME_1 +
+                    " WHERE category =" + cal ,null);
+        }
+        return cursor;
+    }
+
+
+
+
     public void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME_1, "_id=?", new String[]{row_id});

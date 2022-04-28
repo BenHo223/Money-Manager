@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,12 +37,12 @@ public class BalanceFragment extends Fragment {
 
     private TypeAdapter adapter;
 
+    TextView tv_balanceTotal;
     RecyclerView recyclerView;
-
     DatabaseHelper myDB;
     ArrayList<String> record_id, record_date, record_note, record_category, record_amount;
     CustomAdapter customAdapter;
-
+    double sum = 0;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         BalanceViewModel balanceViewModel =
@@ -54,6 +55,7 @@ public class BalanceFragment extends Fragment {
         spinner_type = root.findViewById(R.id.spinner_type);
         spinner_type.setAdapter(adapter);
         recyclerView = root.findViewById(R.id.recyclerView);
+        tv_balanceTotal = root.findViewById(R.id.tv_balanceTotal);
 
         spinner_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -70,6 +72,13 @@ public class BalanceFragment extends Fragment {
                         customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                        sum = 0;
+                        for (String tolatAmount : record_amount){
+                            sum += Float.parseFloat(tolatAmount);
+                        }
+                        tv_balanceTotal.setText(Double.toString(sum));
+
                         Toast.makeText(adapterView.getContext(), "Select: 0", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
@@ -83,6 +92,12 @@ public class BalanceFragment extends Fragment {
                         customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                        sum = 0;
+                        for (String tolatAmount : record_amount){
+                            sum += Float.parseFloat(tolatAmount);
+                        }
+                        tv_balanceTotal.setText(Double.toString(sum));
 
                         Toast.makeText(adapterView.getContext(),"Select: 1", Toast.LENGTH_SHORT ).show();
                         break;
@@ -98,6 +113,12 @@ public class BalanceFragment extends Fragment {
                         customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                        sum = 0;
+                        for (String tolatAmount : record_amount){
+                            sum += Float.parseFloat(tolatAmount);
+                        }
+                        tv_balanceTotal.setText(Double.toString(sum));
                         Toast.makeText(adapterView.getContext(),"Select: 2", Toast.LENGTH_SHORT ).show();
                         break;
                     case 3:
@@ -111,6 +132,12 @@ public class BalanceFragment extends Fragment {
                         customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                        sum = 0;
+                        for (String tolatAmount : record_amount){
+                            sum += Float.parseFloat(tolatAmount);
+                        }
+                        tv_balanceTotal.setText(Double.toString(sum));
                         Toast.makeText(adapterView.getContext(),"Select: 3", Toast.LENGTH_SHORT ).show();
                         break;
                     case 4:
@@ -124,6 +151,12 @@ public class BalanceFragment extends Fragment {
                         customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                        sum = 0;
+                        for (String tolatAmount : record_amount){
+                            sum += Float.parseFloat(tolatAmount);
+                        }
+                        tv_balanceTotal.setText(Double.toString(sum));
                         Toast.makeText(adapterView.getContext(),"Select: 4", Toast.LENGTH_SHORT ).show();
                         break;
                     case 5:
@@ -137,6 +170,12 @@ public class BalanceFragment extends Fragment {
                         customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                        sum = 0;
+                        for (String tolatAmount : record_amount){
+                            sum += Float.parseFloat(tolatAmount);
+                        }
+                        tv_balanceTotal.setText(Double.toString(sum));
                         Toast.makeText(adapterView.getContext(),"Select: 5", Toast.LENGTH_SHORT ).show();
                         break;
                     case 6:
@@ -150,6 +189,12 @@ public class BalanceFragment extends Fragment {
                         customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                        sum = 0;
+                        for (String tolatAmount : record_amount){
+                            sum += Float.parseFloat(tolatAmount);
+                        }
+                        tv_balanceTotal.setText(Double.toString(sum));
                         Toast.makeText(adapterView.getContext(),"Select: 6", Toast.LENGTH_SHORT ).show();
                         break;
                     case 7:
@@ -163,6 +208,12 @@ public class BalanceFragment extends Fragment {
                         customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                        sum = 0;
+                        for (String tolatAmount : record_amount){
+                            sum += Float.parseFloat(tolatAmount);
+                        }
+                        tv_balanceTotal.setText(Double.toString(sum));
                         Toast.makeText(adapterView.getContext(),"Select: 7", Toast.LENGTH_SHORT ).show();
                         break;
                     case 8:
@@ -176,6 +227,12 @@ public class BalanceFragment extends Fragment {
                         customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                        sum = 0;
+                        for (String tolatAmount : record_amount){
+                            sum += Float.parseFloat(tolatAmount);
+                        }
+                        tv_balanceTotal.setText(Double.toString(sum));
                         Toast.makeText(adapterView.getContext(),"Select: 8", Toast.LENGTH_SHORT ).show();
                         break;
                 }
@@ -186,7 +243,6 @@ public class BalanceFragment extends Fragment {
 
             }
         });
-
 
 
         adapter = new TypeAdapter(getActivity(), Data.getTypeList());
@@ -201,13 +257,7 @@ public class BalanceFragment extends Fragment {
         record_amount = new ArrayList<>();
 
 
-
-
-
         return root;
-
-    }
-    public void checkSameDate(){
 
     }
 
