@@ -45,7 +45,7 @@ public class ReportFragment extends Fragment {
         sqLiteDatabase = databaseHelper.getWritableDatabase();
 
         pieDataSet.setValues(getDataValues());
-        pieDataSet.setLabel("Descripcion");
+        pieDataSet.setLabel("Description");
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieDataSet.setValueTextColor(Color.BLACK);
         pieDataSet.setValueTextSize(10f);
