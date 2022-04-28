@@ -172,7 +172,7 @@ public class BalanceFragment extends Fragment {
                         record_note.clear();
                         record_category.clear();
                         record_amount.clear();
-                        storeOtherDataInArrays();
+                        storeOthersDataInArrays();
                         customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -339,8 +339,8 @@ public class BalanceFragment extends Fragment {
 
         }
     }
-    void storeOtherDataInArrays(){
-        Cursor cursor = myDB.readOther();
+    void storeOthersDataInArrays(){
+        Cursor cursor = myDB.readOthers();
         if(cursor.getCount() == 0){
             Toast.makeText(getContext(),"NO data",Toast.LENGTH_LONG).show();
         }else{

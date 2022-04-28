@@ -133,11 +133,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
-    public Cursor readOther(){
+    public Cursor readOthers(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = null;
         if (db != null) {
-            cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_1 + " WHERE category=" + "'Other'",null);
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_1 + " WHERE category=" + "'Others'",null);
         }
         return cursor;
     }
