@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -21,12 +23,13 @@ import com.example.moneymanager.R;
 import com.example.moneymanager.database.DatabaseHelper;
 import com.example.moneymanager.databinding.FragmentBalanceBinding;
 import com.example.moneymanager.inventory.Data;
+import com.example.moneymanager.inventory.Type;
 import com.example.moneymanager.ui.home.CustomAdapter;
 
 import java.util.ArrayList;
 
 public class BalanceFragment extends Fragment {
-
+    private ImageView imageView;
 
     private FragmentBalanceBinding binding;
     private Spinner spinner_type;
@@ -46,9 +49,60 @@ public class BalanceFragment extends Fragment {
 
         binding = FragmentBalanceBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        imageView = root.findViewById(R.id.image);
 
         spinner_type = root.findViewById(R.id.spinner_type);
-        recyclerView = root.findViewById(R.id.recyclerView);
+        spinner_type.setAdapter(adapter);
+
+        spinner_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i){
+                    case 0:
+                        storeDataInArrays();
+                        recyclerView = root.findViewById(R.id.recyclerView);
+                        customAdapter = new CustomAdapter(getContext(),record_id,record_date,record_note,record_category,record_amount);
+                        recyclerView.setAdapter(customAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        Toast.makeText(adapterView.getContext(), "Select: 0", Toast.LENGTH_LONG).show();
+                        break;
+                    case 1:
+
+                        Toast.makeText(adapterView.getContext(),"Select: 1", Toast.LENGTH_LONG ).show();
+                        break;
+
+                    case 2:
+                        Toast.makeText(adapterView.getContext(),"Select: 2", Toast.LENGTH_LONG ).show();
+                        break;
+                    case 3:
+                        Toast.makeText(adapterView.getContext(),"Select: 3", Toast.LENGTH_LONG ).show();
+                        break;
+                    case 4:
+                        Toast.makeText(adapterView.getContext(),"Select: 4", Toast.LENGTH_LONG ).show();
+                        break;
+                    case 5:
+                        Toast.makeText(adapterView.getContext(),"Select: 5", Toast.LENGTH_LONG ).show();
+                        break;
+                    case 6:
+                        Toast.makeText(adapterView.getContext(),"Select: 6", Toast.LENGTH_LONG ).show();
+                        break;
+                    case 7:
+                        Toast.makeText(adapterView.getContext(),"Select: 7", Toast.LENGTH_LONG ).show();
+                        break;
+                    case 8:
+                        Toast.makeText(adapterView.getContext(),"Select: 8", Toast.LENGTH_LONG ).show();
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
         adapter = new TypeAdapter(getActivity(), Data.getTypeList());
         spinner_type.setAdapter(adapter);
 
@@ -60,12 +114,12 @@ public class BalanceFragment extends Fragment {
         record_category = new ArrayList<>();
         record_amount = new ArrayList<>();
 
-        storeDataInArrays();
-        customAdapter = new CustomAdapter(getContext(),record_id,record_date,record_note,record_category,record_amount);
-        recyclerView.setAdapter(customAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         return root;
+
+    }
+    public void checkSameDate(){
 
     }
 
