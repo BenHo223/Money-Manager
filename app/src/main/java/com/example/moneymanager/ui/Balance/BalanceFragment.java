@@ -65,7 +65,6 @@ public class BalanceFragment extends Fragment {
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
         return root;
 
     }
