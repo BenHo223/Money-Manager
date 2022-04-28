@@ -34,10 +34,9 @@ public class BalanceFragment extends Fragment {
     private TypeAdapter adapter;
 
     RecyclerView recyclerView;
-    private ListView noteListView;
 
     DatabaseHelper myDB;
-    ArrayList<String> id,category,date,note,amount;
+    ArrayList<String> record_id, record_date, record_note, record_category, record_amount;
     CustomAdapter customAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -52,40 +51,23 @@ public class BalanceFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recyclerView);
         adapter = new TypeAdapter(getActivity(), Data.getTypeList());
         spinner_type.setAdapter(adapter);
+
+
         myDB =new DatabaseHelper(getActivity());
-        id = new ArrayList<>();
-        date = new ArrayList<>();
-        note = new ArrayList<>();
-        category = new ArrayList<>();
-        amount = new ArrayList<>();
-
-
+        record_id = new ArrayList<>();
+        record_date = new ArrayList<>();
+        record_note = new ArrayList<>();
+        record_category = new ArrayList<>();
+        record_amount = new ArrayList<>();
 
         storeDataInArrays();
-        customAdapter = new CustomAdapter(getActivity(),id,category,date,amount,note);
+        customAdapter = new CustomAdapter(getContext(),record_id,record_date,record_note,record_category,record_amount);
         recyclerView.setAdapter(customAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        //initWidgets();
-        //setNoteAdapter();
         return root;
 
-    }
-
-
-
-    //private void initWidgets() {
-    //noteListView = root.findViewById(R.id.noteListView);
-    //}
-    //private void setNoteAdapter() {
-    // NoteAdapter noteAdapter = new NoteAdapter(getActivity().getApplicationContext(), (List<Note>) Note.noteArrayList);
-    // noteListView.setAdapter(noteAdapter);
-    //}
-
-    public void newNote(View view){
-        Intent newNoteIntent = new Intent(getActivity(), MainActivity.class);
-        //starActivity(newNoteIntent);
     }
 
 
@@ -101,11 +83,11 @@ public class BalanceFragment extends Fragment {
             Toast.makeText(getContext(),"NO data",Toast.LENGTH_LONG).show();
         }else{
             while (cursor.moveToNext()){
-                id.add(cursor.getString(0));
-                date.add(cursor.getString(3));
-                note.add(cursor.getString(2));
-                category.add(cursor.getString(4));
-                amount.add(cursor.getString(1));
+                record_id.add(cursor.getString(0));
+                record_date.add(cursor.getString(1));
+                record_note.add(cursor.getString(2));
+                record_category.add(cursor.getString(3));
+                record_amount.add(cursor.getString(4));
             }
 
         }

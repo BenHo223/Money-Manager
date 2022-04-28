@@ -1,6 +1,5 @@
 package com.example.moneymanager.ui.home;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +15,16 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
     private Context context;
-    ArrayList id,date,category,note,amount;
-    public CustomAdapter(Context context, ArrayList id, ArrayList date, ArrayList note, ArrayList category, ArrayList amount){
+    ArrayList record_id, record_date, record_note, record_category, record_amount;
+
+    public CustomAdapter(Context context,
+                         ArrayList record_id, ArrayList record_date, ArrayList record_note, ArrayList record_category, ArrayList record_amount){
         this.context =context;
-        this.id = id;
-        this.date = date;
-        this.note = note;
-        this.category = category;
-        this.amount = amount;
+        this.record_id = record_id;
+        this.record_date = record_date;
+        this.record_note = record_note;
+        this.record_category = record_category;
+        this.record_amount = record_amount;
 
     }
 
@@ -32,35 +33,36 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.my_row,parent,false);
+        View view = inflater.inflate(R.layout.my_row, parent,false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.id_txt.setText(String.valueOf(id.get(position)));
-        holder.date_txt.setText(String.valueOf(date.get(position)));
-        holder.category_txt.setText(String.valueOf(category.get(position)));
-        holder.note_txt.setText(String.valueOf(note.get(position)));
-        holder.amount_txt.setText(String.valueOf(amount.get(position)));
+        holder.tv_id.setText(String.valueOf(record_id.get(position)));
+        holder.tv_date.setText(String.valueOf(record_date.get(position)));
+        holder.tv_note.setText(String.valueOf(record_note.get(position)));
+        holder.tv_category.setText(String.valueOf(record_category.get(position)));
+        holder.tv_amount.setText(String.valueOf(record_amount.get(position)));
+
     }
 
     @Override
     public int getItemCount() {
-        return id.size();
+        return record_id.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView id_txt,date_txt,category_txt,note_txt,amount_txt;
+        TextView tv_id, tv_date, tv_note, tv_category, tv_amount;
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            id_txt = itemView.findViewById(R.id.id_txt);
-            date_txt = itemView.findViewById(R.id.date_txt);
-            category_txt = itemView.findViewById(R.id.category_txt);
-            note_txt = itemView.findViewById(R.id.note_txt);
-            amount_txt = itemView.findViewById(R.id.amount_txt);
+            tv_id = itemView.findViewById(R.id.tv_id);
+            tv_date = itemView.findViewById(R.id.tv_date);
+            tv_note = itemView.findViewById(R.id.tv_note);
+            tv_category = itemView.findViewById(R.id.tv_category);
+            tv_amount = itemView.findViewById(R.id.tv_amount);
         }
     }
 }

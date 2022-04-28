@@ -32,14 +32,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String exQuery = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_1 +
+        String query = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME_1 +
                 "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_DATE + " DATE , " +
                 COL_NOTE + " TEXT , " +
                 COL_CATEGORY + " TEXT ," +
                 COL_AMOUNT + " FLOAT ) ;";
 
-        db.execSQL(exQuery);
+        db.execSQL(query);
 
 
     }
@@ -71,29 +71,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = null;
-        if (db != null)
+        if (db != null) {
             cursor = db.rawQuery(query, null);
-
+        }
         return cursor;
     }
 
-    public void deteteById (String row_id){
-        SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.delete(TABLE_NAME_1, "_id=?" , new String[]{row_id});
-        if (result == -1 ){
-            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
-        }else
-            Toast.makeText(context, "Deleted successfully!", Toast.LENGTH_SHORT).show();
-    }
+//    public void deteteById (String row_id){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        long result = db.delete(TABLE_NAME_1, "_id=?" , new String[]{row_id});
+//        if (result == -1 ){
+//            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+//        }else
+//            Toast.makeText(context, "Deleted successfully!", Toast.LENGTH_SHORT).show();
+//    }
 
-
-    public Cursor getValues() {
-        String query = "SELECT * FROM " + TABLE_NAME_1;
-        SQLiteDatabase bd = this.getReadableDatabase();
-        Cursor cursor = null;
-        if (bd != null)
-            cursor = bd.rawQuery(query, null);
-
-        return cursor;
-    }
 }
