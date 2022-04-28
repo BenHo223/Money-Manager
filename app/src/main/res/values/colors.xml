@@ -16,8 +16,12 @@
     <color name="color_white">#ededf2</color>
     <color name="color_two">#E3E0E0</color>
 
-    <color name="R">#FFA726</color>
-    <color name="Python">#66BB6A</color>
-    <color name="CPP">#EF5350</color>
-    <color name="Java">#29B6F6</color>
+    <color name="Clothing">#FFA726</color>
+    <color name="Food">#66BB6A</color>
+    <color name="Living">#EF5350</color>
+    <color name="Transport">#29B6F6</color>
+    <color name="Salary">#FFA726</color>
+    <color name="Investment">#66BB6A</color>
+    <color name="Bonus">#EF5350</color>
+    <color name="Others">#29B6F6</color>
 </resources>
