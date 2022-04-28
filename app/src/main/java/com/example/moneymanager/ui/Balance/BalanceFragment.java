@@ -84,26 +84,85 @@ public class BalanceFragment extends Fragment {
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
                         Toast.makeText(adapterView.getContext(),"Select: 1", Toast.LENGTH_LONG ).show();
                         break;
 
                     case 2:
+                        recyclerView.setAdapter(null);
+                        record_id.clear();
+                        record_date.clear();
+                        record_note.clear();
+                        record_category.clear();
+                        record_amount.clear();
+                        storeFoodDataInArrays();
+                        customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
+                        recyclerView.setAdapter(customAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         Toast.makeText(adapterView.getContext(),"Select: 2", Toast.LENGTH_LONG ).show();
                         break;
                     case 3:
+                        recyclerView.setAdapter(null);
+                        record_id.clear();
+                        record_date.clear();
+                        record_note.clear();
+                        record_category.clear();
+                        record_amount.clear();
+                        storeLivingDataInArrays();
+                        customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
+                        recyclerView.setAdapter(customAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         Toast.makeText(adapterView.getContext(),"Select: 3", Toast.LENGTH_LONG ).show();
                         break;
                     case 4:
+                        recyclerView.setAdapter(null);
+                        record_id.clear();
+                        record_date.clear();
+                        record_note.clear();
+                        record_category.clear();
+                        record_amount.clear();
+                        storeTransportDataInArrays();
+                        customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
+                        recyclerView.setAdapter(customAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         Toast.makeText(adapterView.getContext(),"Select: 4", Toast.LENGTH_LONG ).show();
                         break;
                     case 5:
+                        recyclerView.setAdapter(null);
+                        record_id.clear();
+                        record_date.clear();
+                        record_note.clear();
+                        record_category.clear();
+                        record_amount.clear();
+                        storeSalaryDataInArrays();
+                        customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
+                        recyclerView.setAdapter(customAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         Toast.makeText(adapterView.getContext(),"Select: 5", Toast.LENGTH_LONG ).show();
                         break;
                     case 6:
+                        recyclerView.setAdapter(null);
+                        record_id.clear();
+                        record_date.clear();
+                        record_note.clear();
+                        record_category.clear();
+                        record_amount.clear();
+                        storeInvestmentDataInArrays();
+                        customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
+                        recyclerView.setAdapter(customAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         Toast.makeText(adapterView.getContext(),"Select: 6", Toast.LENGTH_LONG ).show();
                         break;
                     case 7:
+                        recyclerView.setAdapter(null);
+                        record_id.clear();
+                        record_date.clear();
+                        record_note.clear();
+                        record_category.clear();
+                        record_amount.clear();
+                        storeBonusDataInArrays();
+                        customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
+                        recyclerView.setAdapter(customAdapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         Toast.makeText(adapterView.getContext(),"Select: 7", Toast.LENGTH_LONG ).show();
                         break;
                     case 8:
@@ -180,7 +239,96 @@ public class BalanceFragment extends Fragment {
 
         }
     }
+    void storeFoodDataInArrays(){
+        Cursor cursor = myDB.readFood();
+        if(cursor.getCount() == 0){
+            Toast.makeText(getContext(),"NO data",Toast.LENGTH_LONG).show();
+        }else{
+            while (cursor.moveToNext()){
+                record_id.add(cursor.getString(0));
+                record_date.add(cursor.getString(1));
+                record_note.add(cursor.getString(2));
+                record_category.add(cursor.getString(3));
+                record_amount.add(cursor.getString(4));
+            }
 
+        }
+    }
+    void storeLivingDataInArrays(){
+        Cursor cursor = myDB.readLiving();
+        if(cursor.getCount() == 0){
+            Toast.makeText(getContext(),"NO data",Toast.LENGTH_LONG).show();
+        }else{
+            while (cursor.moveToNext()){
+                record_id.add(cursor.getString(0));
+                record_date.add(cursor.getString(1));
+                record_note.add(cursor.getString(2));
+                record_category.add(cursor.getString(3));
+                record_amount.add(cursor.getString(4));
+            }
+
+        }
+    }
+    void storeTransportDataInArrays(){
+        Cursor cursor = myDB.readTransport();
+        if(cursor.getCount() == 0){
+            Toast.makeText(getContext(),"NO data",Toast.LENGTH_LONG).show();
+        }else{
+            while (cursor.moveToNext()){
+                record_id.add(cursor.getString(0));
+                record_date.add(cursor.getString(1));
+                record_note.add(cursor.getString(2));
+                record_category.add(cursor.getString(3));
+                record_amount.add(cursor.getString(4));
+            }
+
+        }
+    }
+    void storeSalaryDataInArrays(){
+        Cursor cursor = myDB.readSalary();
+        if(cursor.getCount() == 0){
+            Toast.makeText(getContext(),"NO data",Toast.LENGTH_LONG).show();
+        }else{
+            while (cursor.moveToNext()){
+                record_id.add(cursor.getString(0));
+                record_date.add(cursor.getString(1));
+                record_note.add(cursor.getString(2));
+                record_category.add(cursor.getString(3));
+                record_amount.add(cursor.getString(4));
+            }
+
+        }
+    }
+    void storeInvestmentDataInArrays(){
+        Cursor cursor = myDB.readInvestment();
+        if(cursor.getCount() == 0){
+            Toast.makeText(getContext(),"NO data",Toast.LENGTH_LONG).show();
+        }else{
+            while (cursor.moveToNext()){
+                record_id.add(cursor.getString(0));
+                record_date.add(cursor.getString(1));
+                record_note.add(cursor.getString(2));
+                record_category.add(cursor.getString(3));
+                record_amount.add(cursor.getString(4));
+            }
+
+        }
+    }
+    void storeBonusDataInArrays(){
+        Cursor cursor = myDB.readBonus();
+        if(cursor.getCount() == 0){
+            Toast.makeText(getContext(),"NO data",Toast.LENGTH_LONG).show();
+        }else{
+            while (cursor.moveToNext()){
+                record_id.add(cursor.getString(0));
+                record_date.add(cursor.getString(1));
+                record_note.add(cursor.getString(2));
+                record_category.add(cursor.getString(3));
+                record_amount.add(cursor.getString(4));
+            }
+
+        }
+    }
 
 
 }

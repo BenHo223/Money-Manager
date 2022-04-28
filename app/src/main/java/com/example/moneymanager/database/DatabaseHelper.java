@@ -85,6 +85,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+    public Cursor readFood(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_1 + " WHERE category=" + "'Food'",null);
+        }
+        return cursor;
+    }
+    public Cursor readLiving(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_1 + " WHERE category=" + "'Living'",null);
+        }
+        return cursor;
+    }
+    public Cursor readTransport(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_1 + " WHERE category=" + "'Transport'",null);
+        }
+        return cursor;
+    }
+    public Cursor readSalary(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_1 + " WHERE category=" + "'Salary'",null);
+        }
+        return cursor;
+    }
+    public Cursor readInvestment(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_1 + " WHERE category=" + "'Investment'",null);
+        }
+        return cursor;
+    }
+    public Cursor readBonus(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_1 + " WHERE category=" + "'Bonus'",null);
+        }
+        return cursor;
+    }
 
     public void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
