@@ -133,6 +133,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+    public Cursor readOther(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_1 + " WHERE category=" + "'Other'",null);
+        }
+        return cursor;
+    }
 
     public void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
