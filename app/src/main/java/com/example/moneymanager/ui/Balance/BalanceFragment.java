@@ -45,13 +45,23 @@ public class BalanceFragment extends Fragment {
     ArrayList<String> record_id, record_date, record_note, record_category, record_amount;
     ImageView btn_delAll;
     CustomAdapter customAdapter;
-//    Button btn_del;
-    double sum = 0;
+
+    float sum = 0;
     String id;
+    float TotalClothing1, TotalFood1, TotalLiving1, TotalTransport1, TolatSalary1, TotalInvestment1,TotalBouns1, TotalOthers1, TotalAll1;
 
     SharedPreferences sharedPreferences;
     public static final String mypreference = "mypref";
     public static final String ID = "KeyId";
+    public static final String TotalClothing = "TotalClothing";
+    public static final String TotalFood = "TotalFood";
+    public static final String TotalLiving = "TotalLiving";
+    public static final String TotalTransport = "TotalTransport";
+    public static final String TolatSalary = "TolatSalary";
+    public static final String TotalInvestment = "TotalInvestment";
+    public static final String TotalBouns = "TotalBouns";
+    public static final String TotalOthers = "TotalOthers";
+    public static final String TotalAll = "TotalAll";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -74,10 +84,11 @@ public class BalanceFragment extends Fragment {
             }
         });
 
-
         spinner_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
                 switch (i){
                     case 0:
                         recyclerView.setAdapter(null);
@@ -90,6 +101,7 @@ public class BalanceFragment extends Fragment {
                         customAdapter = new CustomAdapter(getActivity(),record_id,record_date,record_note,record_category,record_amount);
                         recyclerView.setAdapter(customAdapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        TotalAll1  =  -TotalClothing1 -TotalFood1 -TotalLiving1 -TotalTransport1 + TolatSalary1 + TotalInvestment1 + TotalBouns1 + TotalOthers1;
 
                         sum = 0;
                         for (String tolatAmount : record_amount){
@@ -116,7 +128,8 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
-
+                        editor.putString(TotalClothing, String.valueOf(sum));
+                        TotalClothing1 = sum;
                         Toast.makeText(adapterView.getContext(),"Select: Clothing", Toast.LENGTH_SHORT ).show();
                         break;
 
@@ -137,6 +150,8 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
+                        editor.putString(TotalFood,  String.valueOf(sum));
+                        TotalFood1 = sum;
                         Toast.makeText(adapterView.getContext(),"Select: Food", Toast.LENGTH_SHORT ).show();
                         break;
                     case 3:
@@ -156,6 +171,9 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
+                        editor.putString(TotalLiving,  String.valueOf(sum));
+                        TotalLiving1 = sum;
+
                         Toast.makeText(adapterView.getContext(),"Select: Living", Toast.LENGTH_SHORT ).show();
                         break;
                     case 4:
@@ -175,6 +193,9 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
+                        editor.putString(TotalTransport,  String.valueOf(sum));
+                        TotalTransport1 = sum;
+
                         Toast.makeText(adapterView.getContext(),"Select: Transport", Toast.LENGTH_SHORT ).show();
                         break;
                     case 5:
@@ -194,6 +215,8 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
+                        editor.putString(TolatSalary,  String.valueOf(sum));
+                        TolatSalary1 = sum;
                         Toast.makeText(adapterView.getContext(),"Select: Salary", Toast.LENGTH_SHORT ).show();
                         break;
                     case 6:
@@ -213,6 +236,8 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
+                        editor.putString(TotalInvestment,  String.valueOf(sum));
+                        TotalInvestment1 = sum;
                         Toast.makeText(adapterView.getContext(),"Select: Investment", Toast.LENGTH_SHORT ).show();
                         break;
                     case 7:
@@ -232,6 +257,8 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
+                        editor.putString(TotalBouns,  String.valueOf(sum));
+                        TotalBouns1 = sum;
                         Toast.makeText(adapterView.getContext(),"Select: Bonus", Toast.LENGTH_SHORT ).show();
                         break;
                     case 8:
@@ -251,6 +278,8 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
+                        editor.putString(TotalOthers,  String.valueOf(sum));
+                        TotalOthers1 = sum;
                         Toast.makeText(adapterView.getContext(),"Select: Others", Toast.LENGTH_SHORT ).show();
                         break;
                 }
@@ -274,15 +303,25 @@ public class BalanceFragment extends Fragment {
         record_amount = new ArrayList<>();
 
         sharedPreferences = getContext().getSharedPreferences(mypreference, Context.MODE_PRIVATE);
-        if (sharedPreferences.contains(ID))
-            id = sharedPreferences.getString(ID,"");
-//
-//        btn_del.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                myDB.deleteOneRow("'"+ id + "'");
-//            }
-//        });
+
+//        id = sharedPreferences.getString(ID,"");
+//        if (sharedPreferences.contains(TotalClothing))
+//            TotalClothing1 = Float.parseFloat(sharedPreferences.getString(TotalClothing, ""));
+//        if (sharedPreferences.contains(TotalFood))
+//            TotalFood1 = Float.parseFloat(sharedPreferences.getString(TotalFood,""));
+//        if (sharedPreferences.contains(TotalLiving))
+//            TotalLiving1 = Float.parseFloat(sharedPreferences.getString(TotalLiving, ""));
+//        if (sharedPreferences.contains(TotalTransport))
+//            TotalTransport1 = Float.parseFloat(sharedPreferences.getString(TotalTransport, ""));
+//        if (sharedPreferences.contains(TolatSalary))
+//            TolatSalary1 = Float.parseFloat(sharedPreferences.getString(TolatSalary, ""));
+//        if (sharedPreferences.contains(TotalInvestment))
+//            TotalInvestment1 = Float.parseFloat(sharedPreferences.getString(TotalInvestment, ""));
+//        if (sharedPreferences.contains(TotalBouns))
+//            TotalBouns1 = Float.parseFloat(sharedPreferences.getString(TotalBouns, ""));
+//        if (sharedPreferences.contains(TotalOthers))
+//            TotalOthers1 = Float.parseFloat(sharedPreferences.getString(TotalOthers, ""));
+
 
 
         return root;

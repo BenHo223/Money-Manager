@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -147,7 +146,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = null;
         if (db != null) {
-            cursor = db.rawQuery("SELECT Sum("+COL_AMOUNT+ ") FROM " + TABLE_NAME_1 +
+            cursor = db.rawQuery("SELECT Sum(amount) FROM " + TABLE_NAME_1 +
                     " WHERE category =" + cal ,null);
         }
         return cursor;
@@ -169,4 +168,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public String getSum() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String Amount;
+        String sQuery = "SELECT Sum(amount) FROM " + TABLE_NAME_1 +
+                " WHERE category=" + "'Clothing'";
+        Cursor cursor = db.rawQuery(sQuery, null);
+        if (cursor.moveToNext()) {
+            Amount = String.valueOf(cursor.getFloat(0));
+        } else {
+            Amount = "0";
+        }
+        cursor.close();
+        db.close();
+
+        return Amount;
+    }
 }

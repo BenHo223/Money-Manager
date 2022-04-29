@@ -195,10 +195,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
             case R.id.btn_save:
                 DatabaseHelper myDB = new DatabaseHelper(getActivity());
-                myDB.addData(tv_inputDate.getText().toString().trim(),
-                        et_note.getText().toString().trim(),
-                        category,
-                        Float.valueOf(et_amount.getText().toString().trim()));
+                    myDB.addData(tv_inputDate.getText().toString().trim(),
+                            et_note.getText().toString().trim(),
+                            category,
+                            Float.valueOf(et_amount.getText().toString().trim()));
                 break;
 
             case R.id.btn_clear:

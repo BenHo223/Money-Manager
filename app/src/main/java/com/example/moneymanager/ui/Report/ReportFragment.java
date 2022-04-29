@@ -1,9 +1,12 @@
 package com.example.moneymanager.ui.Report;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +39,18 @@ public class ReportFragment<btn_income2> extends Fragment {
     Float tolat_cal_amount;
     Button btn_income2, btn_expense2;
     CardView cardViewGraph1, cardViewGraph2, details1, details2;
+    float TotalClothing1, TotalFood1, TotalLiving1, TotalTransport1, TolatSalary1, TotalInvestment1,TotalBouns1, TotalOthers1, TotalAll1;
 
+    SharedPreferences sharedPreferences;
+    public static final String mypreference = "mypref";
+    public static final String TotalClothing = "TotalClothing";
+    public static final String TotalFood = "TotalFood";
+    public static final String TotalLiving = "TotalLiving";
+    public static final String TotalTransport = "TotalTransport";
+    public static final String TolatSalary = "TolatSalary";
+    public static final String TotalInvestment = "TotalInvestment";
+    public static final String TotalBouns = "TotalBouns";
+    public static final String TotalOthers = "TotalOthers";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -79,6 +93,28 @@ public class ReportFragment<btn_income2> extends Fragment {
             }
         });
 
+        sharedPreferences = getContext().getSharedPreferences(mypreference, Context.MODE_PRIVATE);
+        if (sharedPreferences.contains(TotalClothing))
+            TotalClothing1 = Float.parseFloat(sharedPreferences.getString(TotalClothing, ""));
+        if (sharedPreferences.contains(TotalFood))
+            TotalFood1 = Float.parseFloat(sharedPreferences.getString(TotalFood,""));
+        if (sharedPreferences.contains(TotalLiving))
+            TotalLiving1 = Float.parseFloat(sharedPreferences.getString(TotalLiving, ""));
+        if (sharedPreferences.contains(TotalTransport))
+            TotalTransport1 = Float.parseFloat(sharedPreferences.getString(TotalTransport, ""));
+        if (sharedPreferences.contains(TolatSalary))
+            TolatSalary1 = Float.parseFloat(sharedPreferences.getString(TolatSalary, ""));
+        if (sharedPreferences.contains(TotalInvestment))
+            TotalInvestment1 = Float.parseFloat(sharedPreferences.getString(TotalInvestment, ""));
+        if (sharedPreferences.contains(TotalBouns))
+            TotalBouns1 = Float.parseFloat(sharedPreferences.getString(TotalBouns, ""));
+        if (sharedPreferences.contains(TotalOthers))
+            TotalOthers1 = Float.parseFloat(sharedPreferences.getString(TotalOthers, ""));
+        Log.d("data ",String.valueOf(TotalClothing1));
+
+
+
+
         // Link those objects with their
         // respective id's that
         // we have given in .XML file
@@ -110,16 +146,16 @@ public class ReportFragment<btn_income2> extends Fragment {
 
         // Set the percentage of language used
         storeTolatAmount("clothing");
-        tvClothing.setText(Integer.toString(25));
+        tvClothing.setText(Float.toString(10));
         tvFood.setText(Integer.toString(25));
-        tvLiving.setText(Integer.toString(25));
-        tvTransport.setText(Integer.toString(25));
+        tvLiving.setText(Integer.toString(55));
+        tvTransport.setText(Integer.toString(10));
 
         // Set the data and color to the pie chart
         pieChartIn.addPieSlice(
                 new PieModel(
                         "Clothing",
-                        Integer.parseInt(tvClothing.getText().toString()),
+                        Float.parseFloat(tvClothing.getText().toString()),
                         Color.parseColor("#FFA726")));
         pieChartIn.addPieSlice(
                 new PieModel(
@@ -140,10 +176,10 @@ public class ReportFragment<btn_income2> extends Fragment {
 
 
         // Set the percentage of language used
-        tvSalary.setText(Integer.toString(25));
-        tvInvestment.setText(Integer.toString(25));
-        tvBonus.setText(Integer.toString(25));
-        tvOthers.setText(Integer.toString(25));
+        tvSalary.setText(Integer.toString(62));
+        tvInvestment.setText(Integer.toString(30));
+        tvBonus.setText(Integer.toString(5));
+        tvOthers.setText(Integer.toString(3));
 
         // Set the data and color to the pie chart
         pieChartEx.addPieSlice(

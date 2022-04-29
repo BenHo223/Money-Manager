@@ -133,7 +133,7 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="15dp"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical">
 
                                 <!--View to display the yellow color icon-->
@@ -144,7 +144,7 @@
 
                                 <!--Text view to display Clothing -->
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="10dp"
                                     android:text="Clothing" />
@@ -154,7 +154,7 @@
                             <!--Linear layout to display Food-->
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="15dp"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginTop="5dp">
 
@@ -176,7 +176,7 @@
                             <!--Linear layout to display Living-->
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="15dp"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginTop="5dp">
 
@@ -198,7 +198,7 @@
                             <!--Linear layout to display Transport-->
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="15dp"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginTop="5dp">
 
@@ -463,7 +463,7 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="15dp"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical">
 
                                 <!--View to display the yellow color icon-->
@@ -506,7 +506,7 @@
                             <!--Linear layout to display Bonus-->
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="15dp"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginTop="5dp">
 
@@ -528,7 +528,7 @@
                             <!--Linear layout to display Others-->
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="15dp"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginTop="5dp">
 
