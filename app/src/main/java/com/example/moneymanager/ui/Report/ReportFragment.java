@@ -155,7 +155,7 @@ public class ReportFragment<btn_income2> extends Fragment {
         pieChartIn.addPieSlice(
                 new PieModel(
                         "Clothing",
-                        Float.parseFloat(tvClothing.getText().toString()),
+                        Integer.parseInt(tvClothing.getText().toString()),
                         Color.parseColor("#FFA726")));
         pieChartIn.addPieSlice(
                 new PieModel(
