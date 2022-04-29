@@ -146,7 +146,7 @@ public class ReportFragment<btn_income2> extends Fragment {
 
         // Set the percentage of language used
         storeTolatAmount("clothing");
-        tvClothing.setText(Float.toString(10));
+        tvClothing.setText(Integer.toString(10));
         tvFood.setText(Integer.toString(25));
         tvLiving.setText(Integer.toString(55));
         tvTransport.setText(Integer.toString(10));
