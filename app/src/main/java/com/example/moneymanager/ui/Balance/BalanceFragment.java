@@ -1,12 +1,15 @@
 package com.example.moneymanager.ui.Balance;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -30,8 +33,7 @@ import com.example.moneymanager.ui.home.CustomAdapter;
 import java.util.ArrayList;
 
 public class BalanceFragment extends Fragment {
-    private ImageView imageView;
-
+    private  ImageView imageView;
     private FragmentBalanceBinding binding;
     private Spinner spinner_type;
 
@@ -41,8 +43,16 @@ public class BalanceFragment extends Fragment {
     RecyclerView recyclerView;
     DatabaseHelper myDB;
     ArrayList<String> record_id, record_date, record_note, record_category, record_amount;
+    ImageView btn_delAll;
     CustomAdapter customAdapter;
+//    Button btn_del;
     double sum = 0;
+    String id;
+
+    SharedPreferences sharedPreferences;
+    public static final String mypreference = "mypref";
+    public static final String ID = "KeyId";
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         BalanceViewModel balanceViewModel =
@@ -56,6 +66,14 @@ public class BalanceFragment extends Fragment {
         spinner_type.setAdapter(adapter);
         recyclerView = root.findViewById(R.id.recyclerView);
         tv_balanceTotal = root.findViewById(R.id.tv_balanceTotal);
+        btn_delAll = root.findViewById(R.id.btn_delAll);
+        btn_delAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myDB.deleteAllData();
+            }
+        });
+
 
         spinner_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -79,7 +97,7 @@ public class BalanceFragment extends Fragment {
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
 
-                        Toast.makeText(adapterView.getContext(), "Select: 0", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(adapterView.getContext(), "Select: All", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
                         recyclerView.setAdapter(null);
@@ -99,7 +117,7 @@ public class BalanceFragment extends Fragment {
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
 
-                        Toast.makeText(adapterView.getContext(),"Select: 1", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText(adapterView.getContext(),"Select: Clothing", Toast.LENGTH_SHORT ).show();
                         break;
 
                     case 2:
@@ -119,7 +137,7 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
-                        Toast.makeText(adapterView.getContext(),"Select: 2", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText(adapterView.getContext(),"Select: Food", Toast.LENGTH_SHORT ).show();
                         break;
                     case 3:
                         recyclerView.setAdapter(null);
@@ -138,7 +156,7 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
-                        Toast.makeText(adapterView.getContext(),"Select: 3", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText(adapterView.getContext(),"Select: Living", Toast.LENGTH_SHORT ).show();
                         break;
                     case 4:
                         recyclerView.setAdapter(null);
@@ -157,7 +175,7 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
-                        Toast.makeText(adapterView.getContext(),"Select: 4", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText(adapterView.getContext(),"Select: Transport", Toast.LENGTH_SHORT ).show();
                         break;
                     case 5:
                         recyclerView.setAdapter(null);
@@ -176,7 +194,7 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
-                        Toast.makeText(adapterView.getContext(),"Select: 5", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText(adapterView.getContext(),"Select: Salary", Toast.LENGTH_SHORT ).show();
                         break;
                     case 6:
                         recyclerView.setAdapter(null);
@@ -195,7 +213,7 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
-                        Toast.makeText(adapterView.getContext(),"Select: 6", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText(adapterView.getContext(),"Select: Investment", Toast.LENGTH_SHORT ).show();
                         break;
                     case 7:
                         recyclerView.setAdapter(null);
@@ -214,7 +232,7 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
-                        Toast.makeText(adapterView.getContext(),"Select: 7", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText(adapterView.getContext(),"Select: Bonus", Toast.LENGTH_SHORT ).show();
                         break;
                     case 8:
                         recyclerView.setAdapter(null);
@@ -233,7 +251,7 @@ public class BalanceFragment extends Fragment {
                             sum += Float.parseFloat(tolatAmount);
                         }
                         tv_balanceTotal.setText(Double.toString(sum));
-                        Toast.makeText(adapterView.getContext(),"Select: 8", Toast.LENGTH_SHORT ).show();
+                        Toast.makeText(adapterView.getContext(),"Select: Others", Toast.LENGTH_SHORT ).show();
                         break;
                 }
             }
@@ -248,13 +266,23 @@ public class BalanceFragment extends Fragment {
         adapter = new TypeAdapter(getActivity(), Data.getTypeList());
         spinner_type.setAdapter(adapter);
 
-
         myDB =new DatabaseHelper(getActivity());
         record_id = new ArrayList<>();
         record_date = new ArrayList<>();
         record_note = new ArrayList<>();
         record_category = new ArrayList<>();
         record_amount = new ArrayList<>();
+
+        sharedPreferences = getContext().getSharedPreferences(mypreference, Context.MODE_PRIVATE);
+        if (sharedPreferences.contains(ID))
+            id = sharedPreferences.getString(ID,"");
+//
+//        btn_del.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                myDB.deleteOneRow("'"+ id + "'");
+//            }
+//        });
 
 
         return root;
