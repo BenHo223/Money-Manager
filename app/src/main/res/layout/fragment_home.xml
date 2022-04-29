@@ -29,7 +29,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="Expense" />
+                    android:text="Expense"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:textColor="@color/color_white"
+                    android:textSize="20sp"/>
 
                 <Button
                     android:id="@+id/btn_income"
@@ -37,7 +40,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="@string/income" />
+                    android:backgroundTint="@android:color/holo_green_dark"
+                    android:text="@string/income"
+                    android:textColor="@color/color_white"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -242,6 +248,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Expense / Income:  $"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
                 <EditText
@@ -267,7 +274,11 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="Save" />
+                    android:backgroundTint="@android:color/holo_green_dark"
+                    android:text="Save"
+                    android:textSize="18sp"
+                    app:icon="@android:drawable/ic_menu_save"
+                    app:iconTint="@color/black" />
 
                 <Button
                     android:id="@+id/btn_clear"
@@ -275,7 +286,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="Clear" />
+                    android:backgroundTint="@android:color/holo_red_dark"
+                    android:text="Clear"
+                    android:textSize="18sp"
+                    app:icon="@android:drawable/ic_notification_clear_all" />
 
             </LinearLayout>
 

@@ -14,7 +14,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,7 +25,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tv_datetext"
@@ -53,30 +55,36 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_expense"
+                    android:id="@+id/btn_expense2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="Expense" />
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:text="Expense"
+                    android:textColor="@color/color_white"
+                    android:textSize="20sp" />
 
                 <Button
-                    android:id="@+id/btn_income"
+                    android:id="@+id/btn_income2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="@string/income" />
+                    android:backgroundTint="@android:color/holo_green_light"
+                    android:text="@string/income"
+                    android:textColor="@color/color_white"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -416,6 +424,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="20dp"
                     android:elevation="10dp"
+                    android:visibility="gone"
                     app:cardCornerRadius="10dp">
 
 
@@ -553,6 +562,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
                     android:elevation="10dp"
+                    android:visibility="gone"
                     app:cardCornerRadius="10dp">
 
                     <!--Relative layout to display -->

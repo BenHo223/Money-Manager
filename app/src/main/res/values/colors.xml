@@ -24,4 +24,6 @@
     <color name="Investment">#66BB6A</color>
     <color name="Bonus">#EF5350</color>
     <color name="Others">#29B6F6</color>
+    <color name="green">#64DD17</color>
+    <color name="red">#FF0000</color>
 </resources>

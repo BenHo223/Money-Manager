@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -23,7 +25,7 @@ import org.eazegraph.lib.models.PieModel;
 
 import java.util.ArrayList;
 
-public class ReportFragment extends Fragment {
+public class ReportFragment<btn_income2> extends Fragment {
 
     TextView tvClothing, tvFood, tvLiving, tvTransport, tvSalary, tvInvestment, tvBonus, tvOthers;
     org.eazegraph.lib.charts.PieChart pieChartIn, pieChartEx;
@@ -32,6 +34,9 @@ public class ReportFragment extends Fragment {
     CustomAdapter customAdapter;
 //    ArrayList<String> record_date, record_category, tolat_cal_amount;
     Float tolat_cal_amount;
+    Button btn_income2, btn_expense2;
+    CardView cardViewGraph1, cardViewGraph2, details1, details2;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -39,10 +44,41 @@ public class ReportFragment extends Fragment {
                 new ViewModelProvider(this).get(ReportViewModel.class);
 
         binding = FragmentReportBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
 
         myDB =new DatabaseHelper(getActivity());
+        cardViewGraph1 = root.findViewById(R.id.cardViewGraph1);
+        cardViewGraph2 = root.findViewById(R.id.cardViewGraph2);
+        details1 = root.findViewById(R.id.details1);
+        details2 = root.findViewById(R.id.details2);
 
-        View root = binding.getRoot();
+        btn_expense2 = root.findViewById(R.id.btn_expense2);
+        btn_expense2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                cardViewGraph1.setVisibility(View.VISIBLE);
+                details1.setVisibility(View.VISIBLE);
+                cardViewGraph2.setVisibility(View.GONE);
+                details2.setVisibility(View.GONE);
+                pieChartEx.startAnimation();
+                Toast.makeText(getContext().getApplicationContext(),"Expense report",Toast.LENGTH_SHORT).show();
+            }
+        });
+        btn_income2 = root.findViewById(R.id.btn_income2);
+        btn_income2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cardViewGraph2.setVisibility(View.VISIBLE);
+                details2.setVisibility(View.VISIBLE);
+                cardViewGraph1.setVisibility(View.GONE);
+                details1.setVisibility(View.GONE);
+                pieChartIn.startAnimation();
+                Toast.makeText(getContext().getApplicationContext(),"Income report",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         // Link those objects with their
         // respective id's that
         // we have given in .XML file
