@@ -39,8 +39,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_AMOUNT + " FLOAT ) ;";
 
         db.execSQL(query);
-
-
     }
 
     @Override
